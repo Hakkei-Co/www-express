@@ -134,7 +134,47 @@ All script are defined in the `package-scripts.js` file, but the most important 
 
 ### Install
 
-- Install all dependencies with `yarn install`
+Do not listen to this. Use `npm` only or `pnpm`.
+
+- ~~Install all dependencies with `yarn install`~~
+
+## Troubleshooting
+
+Are you using the right version of Node?
+
+```bash
+$ nvm use
+
+# Delete node_modules and package-lock.json and yarn.lock files
+$ npm cache clean --force
+```
+
+gyp ERR! build error
+
+```bash
+$ npm uninstall node-pre-gyp --save
+$ npm install @mapbox/node-pre-gyp --save
+$ sudo npm install -g node-gyp
+```
+
+node-pre-gyp WARN Pre-built binaries not installable for sqlite3@4.0.4 and node@16.14.2 (node-v93 ABI, unknown) (falling back to source compile with node-gyp)
+```
+$ npm install sqlite3 -D
+$ npm rebuild
+```
+
+
+npm WARN deprecated fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+
+```bash
+$ npm upgrade fsevents
+
+# one of
+$ yarn add fsevents@latest -f --save-optional
+$ npm install fsevents@latest -f --save-optional
+```
+
+
 
 ### Linting
 
